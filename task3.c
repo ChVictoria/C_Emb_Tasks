@@ -38,6 +38,16 @@ void insertEnd(book book, item **head) {
     }
 }
 
+void deleteList(item *head){
+    item *currentItem;
+    item *nextItem = head;
+    while(nextItem != NULL) {
+        currentItem = nextItem;
+        nextItem = currentItem->nextBook;
+        free(currentItem);
+    }
+}
+
 void printCatalog(item *head){
     item *currentBook = head;
     unsigned int i = 1;
@@ -72,4 +82,5 @@ int main(){
     insertEnd(book2, &head);
     insertEnd(book3, &head);
     printCatalog(head);
+    deleteList(head);
 }
